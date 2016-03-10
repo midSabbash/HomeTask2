@@ -1,76 +1,92 @@
 package org.sourceit;
 
+import java.util.Random;
+
 public class HomeTask2 {
+    public static void main(String[] args) {
+        System.out.println("exr 1");
+        System.out.println(+decimalToBinary(2));
+        System.out.println("exr 2");
+        System.out.println(+decimalToOctal(43));
+        System.out.println("exr 3");
+        System.out.println(+decimalToHex(512));
+        System.out.println("exr 4");
+        System.out.println(+binaryToDecimal(1100100));
+        System.out.println("exr 5");
+        System.out.println(+octalToDecimal(144));
+        System.out.println("exr 6");
+        System.out.println(+hexToDecimal(64));
+        System.out.println("exr 7");
+        System.out.println(generateTwoDimensionArray(10,10));
+    }
 
-    /**
-     * Конвертирует десятичное число в бинарную форму
-     *
-     * @param number может быть только позитивным
-     * @return бинарная форма числа
-     */
     public static long decimalToBinary(int number) {
-        return -1;
+        int b;
+        String temp = "";
+        while(number !=0){
+            b = number%2;
+            temp = b + temp;
+            number = number/2;
+        }
+        long d = new Long(temp);
+        return d;
     }
 
-    /**
-     * Конвертирует десятичное число в октальную форму
-     *
-     * @param number может быть только позитивным
-     * @return октальная форма числа
-     */
     public static long decimalToOctal(int number) {
-        return -1;
+        int b;
+        String temp = "";
+        while(number !=0){
+            b = number%8;
+            temp = b + temp;
+            number = number/8;
+        }
+        long d = new Long(temp);
+        return d;
+
     }
 
-    /**
-     * Конвертирует десятичное число в хексовою форму
-     *
-     * @param number может быть только позитивным
-     * @return хексовая форма числа
-     */
     public static long decimalToHex(int number) {
-        return -1;
+        int b;
+        String temp = "";
+        while(number !=0){
+            b = number%16;
+            temp = b + temp;
+            number = number/16;
+        }
+        long d = new Long(temp);
+        return d;
     }
 
-    /**
-     * Конвертирует бинарную форму в десятичное число
-     *
-     * @param binary бинарная форма, может быть только позитивным
-     * @return десятичное число
-     */
     public static int binaryToDecimal(long binary) {
-        return -1;
+        int a;
+        a = (Integer.parseInt(String.valueOf(binary), 2));
+        return a;
     }
 
-    /**
-     * Конвертирует октальную форму в десятичное число
-     *
-     * @param octal октальная форма, может быть только позитивным
-     * @return десятичное число
-     */
     public static int octalToDecimal(long octal) {
-        return -1;
+        int a;
+        a = (Integer.parseInt(String.valueOf(octal),8));
+        return a;
     }
 
-    /**
-     * Конвертирует хексовую форму в десятичное число
-     *
-     * @param hex хексовая форма, может быть только позитивным
-     * @return десятичное число
-     */
     public static int hexToDecimal(long hex) {
-        return -1;
+        int a;
+        a = (Integer.parseInt(String.valueOf(hex), 16));
+        return a;
     }
 
-    /**
-     * Генерируют двумерный массив, со случайными числами.
-     *
-     * @param rows
-     * @param columns
-     * @return двумерный массив
-     */
     public static int[][] generateTwoDimensionArray(int rows, int columns) {
-        return null;
+
+        int[][] arr = new int[rows][columns];
+
+        Random random = new Random();
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                arr[i][j] = random.nextInt();
+            }
+        }
+        return arr;
     }
 
     /**
