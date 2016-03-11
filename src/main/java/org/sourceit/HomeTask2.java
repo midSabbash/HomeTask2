@@ -18,6 +18,8 @@ public class HomeTask2 {
         System.out.println(+hexToDecimal(64));
         System.out.println("exr 7");
         System.out.println(generateTwoDimensionArray(10,10));
+        System.out.println("exr 8");
+        System.out.println(getSimple(10));
     }
 
     public static long decimalToBinary(int number) {
@@ -102,6 +104,7 @@ public class HomeTask2 {
         return 1;
     }
 
+
     /**
      * Выводит все простые числа из интервала от 2 до n.
      *
@@ -109,7 +112,9 @@ public class HomeTask2 {
      * @return массив простых чисел.
      */
     public static int[] getSimple(int n) {
-        return null;
+        int[]array = new int [n];
+        int a = 0;
+      return null;
     }
 
     // Рекурсивные методы. Реализовать их нужно с помощью рекурсии.
