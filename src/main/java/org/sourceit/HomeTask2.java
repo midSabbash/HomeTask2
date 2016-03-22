@@ -1,9 +1,6 @@
 package org.sourceit;
 
-import com.sun.org.apache.xpath.internal.SourceTree;
-
 import java.util.Random;
-import java.util.concurrent.SynchronousQueue;
 
 public class HomeTask2 {
     public static void main(String[] args) {
@@ -26,9 +23,9 @@ public class HomeTask2 {
         System.out.print("exr 9 ");
         System.out.println(getSimple(10));
         System.out.print("exr 10 ");
-        System.out.println(+sum(20));
+        System.out.println(+sum(1));
         System.out.print("exr 11 ");
-        System.out.println(+product(10,12));
+        System.out.println(+product(-2,4));
 
     }
 
@@ -127,10 +124,7 @@ public class HomeTask2 {
 
     public static long sum(int n) {
         if(n<0) return 0;
-        long r;
-        if (n==1) return 1;
-        r = sum(n-1)+n;
-        return r;
+        return sum(n-1)+n;
     }
 
     /**
@@ -141,9 +135,8 @@ public class HomeTask2 {
      * @return
      */
     public static int product(int first, int second) {
-        if(second > 1) {
+        if(second > 1)
             return first + product(first, --second);
-        }
         return first;
     }
 
