@@ -1,25 +1,35 @@
 package org.sourceit;
 
+import com.sun.org.apache.xpath.internal.SourceTree;
+
 import java.util.Random;
+import java.util.concurrent.SynchronousQueue;
 
 public class HomeTask2 {
     public static void main(String[] args) {
-        System.out.println("exr 1");
+        System.out.print("exr 1 > ");
         System.out.println(+decimalToBinary(2));
-        System.out.println("exr 2");
+        System.out.print("exr 2 ");
         System.out.println(+decimalToOctal(43));
-        System.out.println("exr 3");
+        System.out.print("exr 3 ");
         System.out.println(+decimalToHex(512));
-        System.out.println("exr 4");
+        System.out.print("exr 4 ");
         System.out.println(+binaryToDecimal(1100100));
-        System.out.println("exr 5");
+        System.out.print("exr 5 ");
         System.out.println(+octalToDecimal(144));
-        System.out.println("exr 6");
+        System.out.print("exr 6 ");
         System.out.println(+hexToDecimal(64));
-        System.out.println("exr 7");
+        System.out.print("exr 7 ");
         System.out.println(generateTwoDimensionArray(10,10));
-        System.out.println("exr 8");
+        System.out.print("exr 8 ");
+        System.out.println();
+        System.out.print("exr 9 ");
         System.out.println(getSimple(10));
+        System.out.print("exr 10 ");
+        System.out.println(+sum(20));
+        System.out.print("exr 11 ");
+        System.out.println(+product(10,12));
+
     }
 
     public static long decimalToBinary(int number) {
@@ -112,21 +122,15 @@ public class HomeTask2 {
      * @return массив простых чисел.
      */
     public static int[] getSimple(int n) {
-        int[]array = new int [n];
-        int a = 0;
-      return null;
+       return null;
     }
 
-    // Рекурсивные методы. Реализовать их нужно с помощью рекурсии.
-
-    /**
-     * Вычисляет сумму чисел от 1 до n включительно.
-     *
-     * @param n предел
-     * @return сумма
-     */
     public static long sum(int n) {
-        return 0;
+        if(n<0) return 0;
+        long r;
+        if (n==1) return 1;
+        r = sum(n-1)+n;
+        return r;
     }
 
     /**
@@ -137,7 +141,10 @@ public class HomeTask2 {
      * @return
      */
     public static int product(int first, int second) {
-        return -1;
+        if(second > 1) {
+            return first + product(first, --second);
+        }
+        return first;
     }
 
 }
