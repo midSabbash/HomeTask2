@@ -6,27 +6,26 @@ public class HomeTask2 {
     public static void main(String[] args) {
         System.out.print("exr 1 > ");
         System.out.println(+decimalToBinary(2));
-        System.out.print("exr 2 ");
+        System.out.print("exr 2 > ");
         System.out.println(+decimalToOctal(43));
-        System.out.print("exr 3 ");
+        System.out.print("exr 3 > ");
         System.out.println(+decimalToHex(512));
-        System.out.print("exr 4 ");
+        System.out.print("exr 4 > ");
         System.out.println(+binaryToDecimal(1100100));
-        System.out.print("exr 5 ");
+        System.out.print("exr 5 > ");
         System.out.println(+octalToDecimal(144));
-        System.out.print("exr 6 ");
+        System.out.print("exr 6 > ");
         System.out.println(+hexToDecimal(64));
-        System.out.print("exr 7 ");
+        System.out.print("exr 7 > ");
         System.out.println(generateTwoDimensionArray(10,10));
-        System.out.print("exr 8 ");
-        System.out.println();
-        System.out.print("exr 9 ");
-        System.out.println(getSimple(10));
-        System.out.print("exr 10 ");
+        System.out.print("exr 8 > ");
+        System.out.println(findMaxProduct(generateTwoDimensionArray(4,4)));
+        System.out.print("exr 9 > ");
+        System.out.println(getSimple(30));
+        System.out.print("exr 10 > ");
         System.out.println(+sum(1));
-        System.out.print("exr 11 ");
-        System.out.println(+product(-2,4));
-
+        System.out.print("exr 11 > ");
+        System.out.println(+product(-2,-5));
     }
 
     public static long decimalToBinary(int number) {
@@ -92,34 +91,64 @@ public class HomeTask2 {
 
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
-                arr[i][j] = random.nextInt();
+                arr[i][j] =  1 + random.nextInt(9);
+            }
+        }
+        for (int i = 0; i < rows; i++) {
+            System.out.println();
+
+            for (int j = 0; j < columns; j++) {
+                System.out.print(arr[i][j] + " ");
             }
         }
         return arr;
     }
 
-    /**
-     * Определить и вывести на экран индекс строки с
-     * наибольшим по модулю произведением элементов.
-     * Если таких строк несколько, то вывести индекс
-     * первой встретившейся из них.
-     *
-     * @param input двумерный массив
-     * @return индекс строки
-     */
     public static int findMaxProduct(int[][] input) {
-        return 1;
+        int a = 1;
+        int line = 0;
+        for(int i = 0; i < input.length; i++) {
+            for (int j = 0, x = 1; j < input[i].length; j++) {
+                x = x * input[i][j];
+
+                if (j == input[i].length - 1) {
+                    if (a < x) {
+                        a = x;
+                        line = i;
+                    }
+                }
+            }
+        }
+        return line;
     }
 
-
-    /**
-     * Выводит все простые числа из интервала от 2 до n.
-     *
-     * @param n
-     * @return массив простых чисел.
-     */
     public static int[] getSimple(int n) {
-       return null;
+        int quantity = 0;
+        int cell = 0;
+
+        for(int i = 2; i < n; i++)
+            if (simple(i)){
+                quantity++;
+                System.out.print(i+" ");
+            }
+        int [] array = new int[quantity];
+        for(int j = 2;j<n;j++){
+            if(simple(j)) {
+                array[cell] = j;
+                cell++;
+            }
+        }
+        return array;
+    }
+
+    static boolean simple(int digit){
+        boolean pudge = true;
+        for(int i = 2; i <= digit/2 ; i++){
+            if(digit % i == 0) {
+                pudge = false;
+            }
+        }
+        return pudge;
     }
 
     public static long sum(int n) {
@@ -127,17 +156,10 @@ public class HomeTask2 {
         return sum(n-1)+n;
     }
 
-    /**
-     * Метод вычисляет, результат умножения.
-     *
-     * @param first
-     * @param second
-     * @return
-     */
     public static int product(int first, int second) {
-        if(second > 1)
-            return first + product(first, --second);
-        return first;
+        if (first == 0 || second == 0) return 0;
+        if (first < 0) return (second *-1 + product(first +1, second));
+        if (second < 0) return (first *-1 + product(first, second +1));
+        return (first > 0 & second > 0)? first + product(first, second -1):0;
     }
-
 }
