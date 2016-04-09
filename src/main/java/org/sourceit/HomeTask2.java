@@ -2,6 +2,8 @@ package org.sourceit;
 
 import java.util.Random;
 
+import static java.lang.Math.pow;
+
 public class HomeTask2 {
     public static void main(String[] args) {
         System.out.print("exr 1 > ");
@@ -9,7 +11,7 @@ public class HomeTask2 {
         System.out.print("exr 2 > ");
         System.out.println(+decimalToOctal(43));
         System.out.print("exr 3 > ");
-        System.out.println(+decimalToHex(512));
+        System.out.println(+decimalToHex(100));
         System.out.print("exr 4 > ");
         System.out.println(+binaryToDecimal(1100100));
         System.out.print("exr 5 > ");
@@ -26,63 +28,192 @@ public class HomeTask2 {
         System.out.println(+sum(1));
         System.out.print("exr 11 > ");
         System.out.println(+product(-2,-5));
-    }
 
+    }
+//toBinary
     public static long decimalToBinary(int number) {
-        int b;
-        String temp = "";
-        while(number !=0){
-            b = number%2;
-            temp = b + temp;
-            number = number/2;
+        long a = 0;
+        int[] array = binaryArray(number);
+        for (int i = binary(number) - 1; i != -1; i--) {
+            a = a * 10 + array[i];
         }
-        long d = new Long(temp);
-        return d;
+        return a;
+    }
+    public static int binary(int binaryNumbers) {
+        int q = 0;
+        while (binaryNumbers != 0) {
+            binaryNumbers /= 2;
+            q++;
+        }
+        return q;
+    }
+    public static int[] binaryArray(int binaryNumbers2) {
+        int y = binary(binaryNumbers2);
+        int[] mass = new int[y];
+        int i = 0;
+        while (binaryNumbers2 != 0) {
+            int a = binaryNumbers2 % 2;
+            mass[i] = a;
+            binaryNumbers2 /= 2;
+            i++;
+        }
+        return mass;
     }
 
+//toOctal
     public static long decimalToOctal(int number) {
-        int b;
-        String temp = "";
-        while(number !=0){
-            b = number%8;
-            temp = b + temp;
-            number = number/8;
+        long a = 0;
+        int[] array = arrayOctal(number);
+        for (int i = digitsOctal(number) - 1; i != -1; i--) {
+            a = a * 10 + array[i];
         }
-        long d = new Long(temp);
-        return d;
+        return a;
+    }
+    public static int digitsOctal(int octalNumbers) {
+        int q = 0;
+        while (octalNumbers != 0) {
+            octalNumbers /= 8;
+            q++;
+        }
+        return q;
+    }
+    public static int[] arrayOctal(int octalNumber2) {
+        int y = digitsOctal(octalNumber2);
+        int[] mass = new int[y];
+        int i = 0;
+        while (octalNumber2 != 0) {
+            int a = octalNumber2 % 8;
+            mass[i] = a;
+            octalNumber2 /= 8;
+            i++;
+        }
+        return mass;
+
 
     }
 
+//toHex
     public static long decimalToHex(int number) {
-        int b;
-        String temp = "";
-        while(number !=0){
-            b = number%16;
-            temp = b + temp;
-            number = number/16;
+            long a = 0;
+            int[] mas = arrayHex(number);
+            for (int i = digitsHex(number) - 1; i != -1; i--) {
+                a = a * 100 + mas[i];
+            }
+            return a;
         }
-        long d = new Long(temp);
-        return d;
+    public static int digitsHex(int hexNumber) {
+        int q = 0;
+        while (hexNumber != 0) {
+            hexNumber /= 16;
+            q++;
+        }
+        return q;
+    }
+    public static int[] arrayHex(int hexNumber2) {
+        int y = digitsHex(hexNumber2);
+        int[] mass = new int[y];
+        int i = 0;
+        while (hexNumber2 != 0) {
+            int a = hexNumber2 % 16;
+            mass[i] = a;
+            hexNumber2 /= 16;
+            i++;
+        }
+        return mass;
     }
 
-    public static int binaryToDecimal(long binary) {
-        int a;
-        a = (Integer.parseInt(String.valueOf(binary), 2));
-        return a;
+
+//fromBinary
+    public static long binaryToDecimal (long bin){
+        long array[] = arrayCount(bin);
+        int i = 0;
+        long g = 0;
+        while(i != arrayLength(bin)){
+            g = g + array[i] * (long)Math.pow(2,i);
+            i++;
+        }
+        return g;
+    }
+    public static long[] arrayCount (long binary) {
+        long[]array = new long[arrayLength(binary)];
+        int i = 0;
+        while (binary != 0) {
+            long a = binary % 10;
+            array[i] = a;
+            binary /= 10;
+            i++;
+        }
+        return  array;
     }
 
+
+//fromOctal
     public static int octalToDecimal(long octal) {
-        int a;
-        a = (Integer.parseInt(String.valueOf(octal),8));
-        return a;
+        long array[] = arrayCount2(octal);
+        int i = 0;
+        long g = 0;
+        while(i != arrayLength(octal)){
+            g = g + array[i] * (long)Math.pow(8,i);
+            i++;
+        }
+        return (int)g;
+    }
+    public static long[] arrayCount2 (long binary) {
+        long[]array = new long[arrayLength(binary)];
+        int i = 0;
+        while (binary != 0) {
+            long a = binary % 10;
+            array[i] = a;
+            binary /= 10;
+            i++;
+        }
+        return  array;
     }
 
+//arrayLengthCounter
+    public static int arrayLength (long binary){
+    int count = 0;
+    while(binary != 0){
+        binary = binary / 10;
+        count++;
+    }
+    return count;
+}
+
+
+//fromHex
     public static int hexToDecimal(long hex) {
-        int a;
-        a = (Integer.parseInt(String.valueOf(hex), 16));
-        return a;
+        long array[] = arrayCount3(hex);
+        int i = 0;
+        long g = 0;
+        while(i != arrayLength1(hex)){
+            g = g + array[i] * (long)Math.pow(16,i);
+            i++;
+        }
+        return (int)g;
+    }
+    public static long[] arrayCount3 (long binary) {
+        long[]array = new long[arrayLength(binary)];
+        int i = 0;
+        while (binary != 0) {
+            long a = binary % 100;
+            array[i] = a;
+            binary /= 100;
+            i++;
+        }
+        return  array;
+    }
+    public static int arrayLength1 (long binary) {
+        int count = 0;
+        while (binary != 0) {
+            binary = binary / 100;
+            count++;
+        }
+        return count;
     }
 
+
+/////
     public static int[][] generateTwoDimensionArray(int rows, int columns) {
 
         int[][] arr = new int[rows][columns];
@@ -140,7 +271,6 @@ public class HomeTask2 {
         }
         return array;
     }
-
     static boolean simple(int digit){
         boolean pudge = true;
         for(int i = 2; i <= digit/2 ; i++){

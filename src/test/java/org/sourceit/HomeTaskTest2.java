@@ -32,7 +32,7 @@ public class HomeTaskTest2 {
 
     @Test
     public void testDecimalToHex2() {
-        Assert.assertEquals(HomeTask2.decimalToHex(100), 64);
+        Assert.assertEquals(HomeTask2.decimalToHex(100), 604);
     }
 
     @Test
@@ -62,7 +62,7 @@ public class HomeTaskTest2 {
 
     @Test
     public void testHexToDecimal2() {
-        Assert.assertEquals(HomeTask2.hexToDecimal(64), 100);
+        Assert.assertEquals(HomeTask2.hexToDecimal(604), 100);
     }
 
     @Test
