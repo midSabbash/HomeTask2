@@ -218,18 +218,9 @@ public class HomeTask2 {
 
         int[][] arr = new int[rows][columns];
 
-        Random random = new Random();
-
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
-                arr[i][j] =  1 + random.nextInt(9);
-            }
-        }
-        for (int i = 0; i < rows; i++) {
-            System.out.println();
-
-            for (int j = 0; j < columns; j++) {
-                System.out.print(arr[i][j] + " ");
+                arr[i][j] =  1 + (int) (Math.random() * (9));
             }
         }
         return arr;
